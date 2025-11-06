@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <h2>Contact <span>Me</span></h2>
+      <p>I'd love to hear from you! Fill out the form or connect through social media.</p>
+
+      <div class="contact-content">
+        <!-- Contact Form -->
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+          <p id="form-status"></p>
+        </form>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p><i class="fa fa-envelope"></i> bhattacharyasayak977@gmail.com</p>
+          <p><i class="fa fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fa fa-map-marker-alt"></i> Kolkata, India</p>
+
+          <div class="social-icons">
+            <a href="https://linkedin.com" target="_blank"><i class="fa fa-facebook-f"></i>Facebook</a>
+            <a href="https://github.com" target="_blank"><i class="fa fa-github"></i>Github</a><br> <br>
+            <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i>Twitter</a>
+            <a href="https://instagram.com" target="_blank"><i class="fa fa-instagram"></i>Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  const status = document.getElementById("form-status");
+
+  if (name === "" || email === "" || message === "") {
+    status.textContent = "⚠️ Please fill out all fields.";
+    status.style.color = "orange";
+    return;
+  }
+
+  // Simple Email validation
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(emailPattern)) {
+    status.textContent = "❌ Please enter a valid email address.";
+    status.style.color = "red";
+    return;
+  }
+
+  // Simulate success message
+  status.textContent = "✅ Message sent successfully!";
+  status.style.color = "lightgreen";
+
+  // Reset form
+  document.getElementById("contactForm").reset();
+
+  // Optional: fade out message after a few seconds
+  setTimeout(() => (status.textContent = ""), 4000);
+});
+
+  </script>
+</body>
+</html>
